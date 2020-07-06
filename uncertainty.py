@@ -67,7 +67,7 @@ def main():
             s_epu = df['India']
         if select_method1 == 'Irlanda':
             s_epu = df['Ireland']
-        if select_method1 == 'Italia':
+        if select_method1 == 'Itália':
             s_epu = df['Italy']
         if select_method1 == 'Japão':
             s_epu = df['Japan']
