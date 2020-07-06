@@ -15,31 +15,19 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import seaborn as sns
-import base64
 import matplotlib.pyplot as plt
-
-from prettytable import PrettyTable
 
 import plotly.offline as py
 import plotly.graph_objs as go
 
-def get_table_download_link(df):
-    """Generates a link allowing the data in a given panda dataframe to be downloaded
-    in:  dataframe
-    out: href string
-    """
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
-    return href
-
 def main():
     st.title('Codenation - AceleraDev Data Science')
     st.subheader('Processamento de Dados em Python')
+    st.subheader('Análise dos dados de Incerteza de Política Econômica (EPU)')
     st.subheader('Autora: Cristiane Gea')
+    st.subheader('')
     df = pd.read_excel('EPU.xlsx')
     if df is not None:
-        st.subheader('Análise dos dados de Incerteza de Política Econômica (EPU)')
         # st.markdown('**Número de linhas:**')
         # st.markdown(df.shape[0])
         # st.markdown('**Número de colunas:**')
@@ -101,6 +89,8 @@ def main():
 
         select_method2 = st.sidebar.selectbox('Selecione o tipo de análise desejada:', ('Univariada', 'Bivariada'))
         if select_method2 == 'Univariada':
+            st.markdown(f'**Análise Univariada: {s_epu.name}**')
+            
             # Visualização dos dados
             st.markdown('**Visualização dos dados**')        
             
@@ -111,7 +101,7 @@ def main():
             st.dataframe(df_univariate)
             
             # Gráfico Univariado
-            st.markdown('**Evolução da Incerteza de Política Econômica (EPU)**')
+            st.markdown('**Evolução da Incerteza de Política Econômica**')
 
             s_date = df['Date']
             plt.figure(figsize = (12, 6))
@@ -140,7 +130,7 @@ def main():
             # st.pyplot(fig)
             
             # Cálculo da estatística descritiva
-            st.markdown('**Resumo Estatístico da Incerteza de Política Econômica (EPU)**')
+            st.markdown('**Resumo Estatístico da Incerteza de Política Econômica**')
             
             st.dataframe(round(s_epu.describe(), 2))
             
@@ -163,6 +153,8 @@ def main():
             # st.table1
 
         if select_method2 == 'Bivariada':
+            st.markdown(f'**Análise Bivariada: {s_epu.name} vs Brazil**')
+            
             # Visualização dos dados
             st.markdown('**Visualização dos dados**')        
             
@@ -174,7 +166,7 @@ def main():
             st.dataframe(df_bivariate)
             
             # Gráfico comparativo
-            st.markdown('**Evolução da Incerteza de Política Econômica (EPU)**')
+            st.markdown('**Evolução da Incerteza de Política Econômica**')
 
             s_date = df['Date']
             s_br = df['Brazil']
@@ -212,7 +204,7 @@ def main():
             # st.dataframe((py.iplot(fig)))
             
             # Cálculo da estatística descritiva
-            st.markdown('**Resumo Estatístico da Incerteza de Política Econômica (EPU)**')
+            st.markdown('**Resumo Estatístico da Incerteza de Política Econômica**')
             
             bivariate = pd.DataFrame()
             bivariate[f'{s_epu.name}'] = s_epu
