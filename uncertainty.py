@@ -18,7 +18,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 #import plotly.offline as py
-import plotly.graph_objs as go
+#import plotly.graph_objs as go
 
 def main():
     st.title('Codenation - AceleraDev Data Science')
