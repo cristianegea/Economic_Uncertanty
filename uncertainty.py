@@ -26,6 +26,8 @@ def main():
     st.subheader('Processamento de Dados em Python')
     st.subheader('Análise dos dados de Incerteza de Política Econômica (EPU)')
     st.subheader('Autora: Cristiane Gea')
+    st.markdown('Linkedin: https://www.linkedin.com/in/cristianegea/')
+    st.markdown('GitHub: https://github.com/cristianegea')
     st.subheader('')
     df = pd.read_excel('EPU.xlsx')
     if df is not None:
