@@ -16,6 +16,7 @@ import pandas as pd
 import streamlit as st
 import seaborn as sns
 import matplotlib.pyplot as plt
+import xlrd
 
 #import plotly.offline as py
 #import plotly.graph_objs as go
